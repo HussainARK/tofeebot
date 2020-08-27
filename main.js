@@ -33,6 +33,7 @@ client.on('message', message => {
         .setDescription(`These are commands that you can use:\n
 **t/help** - Send this Message
 **t/say {something}** - Say Something
+**t/ask {question}** - It'll answer
 **t/kick {@somebody}** - Kick Somebody
 **t/subreddit** - Send you ***OUR***  Subreddit Link
 **t/youtube** - Send you the Owner's YT Channel Link
