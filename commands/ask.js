@@ -17,7 +17,7 @@ module.exports = {
             "I'm Bored, I can't even answer",
             "***BRUH***",
             "I'll pretend that I didn't read that",
-            "Hey @Owner ! Look at what This Guy asked!",
+            "Hey <@&743503619281780756>! Look at what This Guy asked!",
         ]
 
         message.channel.send(answers[Math.floor(Math.random()*answers.length)]);
