@@ -15,6 +15,6 @@ module.exports = {
             "Sorry but this is a Hard Question"
         ]
 
-        message.channel.send(answers[Math.floor(Math.random()*items.length)]);
+        message.channel.send(answers[Math.floor(Math.random()*answers.length)]);
     }
 }
