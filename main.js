@@ -21,8 +21,8 @@ client.once('ready', () => {
 	client.user.setPresence({
         status: "online",
         activity: {
-            name: "t/help",
-			type: "WATCHING"
+            name: "Waiting for t/help",
+			type: "CUSTOM_STATUS"
         }
     });
 });
