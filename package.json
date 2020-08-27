@@ -1,0 +1,17 @@
+{
+  "name": "discordbot",
+  "version": "1.0.0",
+  "description": "Just making My Own Discrod Bot!",
+  "main": "main.js",
+  "scripts": {
+    "start": "node .",
+    "startDev": "nodemon"
+  },
+  "author": "HussainARK",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
