@@ -12,7 +12,12 @@ module.exports = {
             'Sadly, No',
             'Sadly, Yes',
             "I don't have Enough Time to answer This",
-            "Sorry but this is a Hard Question"
+            "Sorry but this is a Hard Question",
+            "I don't think So,",
+            "I'm Bored, I can't even answer",
+            "***BRUH***",
+            "I'll pretend that I didn't read that",
+            "Hey @Owner ! Look at what This Guy asked!",
         ]
 
         message.channel.send(answers[Math.floor(Math.random()*answers.length)]);
