@@ -22,7 +22,7 @@ client.once('ready', () => {
         status: "online",
         activity: {
             name: "t/help",
-			type: "WATCHING",
+			type: "STREAMING",
 			url: "https://github.com/HussainARK/tofeebot"
         }
     });
