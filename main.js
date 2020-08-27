@@ -25,7 +25,7 @@ client.on('message', message => {
 
 	const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-
+	
 	if (command === 'help') {
         const embed = new Discord.MessageEmbed()
         .setTitle('Help')
@@ -47,6 +47,8 @@ client.on('message', message => {
 		client.commands.get('kick').execute(message, args);
 	} else if (command == 'twitter') {
 		client.commands.get('twitter').execute(message, args);
+	} else if (command == 'ask') {
+		client.commands.get('ask').execute(message, args);
 	} else if (command == 'say') {
         client.commands.get('say').execute(message, args);
 	} else if (command == 'reddit') {
