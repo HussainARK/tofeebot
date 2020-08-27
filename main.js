@@ -56,7 +56,7 @@ client.on('message', message => {
 		client.commands.get('reddit').execute(message, args);
 	} else if (command == 'subreddit') {
 		client.commands.get('subreddit').execute(message, args);
-	} else if (command == 'hello') {
+	} else if (command == 'hello' || 'hi' || 'hey') {
         client.commands.get('hello').execute(message, args);
     } else {
 		message.channel.send('Bruh what did you say?');
