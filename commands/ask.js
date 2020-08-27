@@ -7,7 +7,7 @@ module.exports = {
                             "Probably No??" || 
                             "No!" || 
                             "YES!" ||
-                            `Don't ask Me, Ask @${message.mentions.members.first().nickname}`,
+                            `Don't ask Me that Question!`,
                             'Sadly, No',
                             'Sadly, Yes',
                             "I don't have Enough Time to answer This");
