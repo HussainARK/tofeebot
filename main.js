@@ -18,6 +18,13 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 	console.log('TofeeBot is Online!');
+	client.user.setPresence({
+        status: "online",
+        activity: {
+            name: "t/help",
+			type: "WATCHING"
+        }
+    });
 });
 
 client.on('message', message => {
