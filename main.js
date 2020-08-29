@@ -43,6 +43,7 @@ client.on('message', message => {
 **t/ask {question}** - It'll answer
 **t/kick {@somebody}** - Kick Somebody
 **t/subreddit** - Send you ***OUR***  Subreddit Link
+**t/partner** - Send you ***OUR***  Partner Server's Invite Link
 **t/youtube** - Send you the Owner's YT Channel Link
 **t/twitter** - Send you the Owner's Twitter Link
 **t/reddit** - Send you the Owner's Reddit Link        
