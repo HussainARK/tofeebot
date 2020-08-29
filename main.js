@@ -57,6 +57,8 @@ client.on('message', message => {
 		client.commands.get('twitter').execute(message, args);
 	} else if (command == 'ask') {
 		client.commands.get('ask').execute(message, args);
+	} else if (command == 'partner') {
+		client.commands.get('partner').execute(message, args);
 	} else if (command == 'say') {
         client.commands.get('say').execute(message, args);
 	} else if (command == 'reddit') {
