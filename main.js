@@ -43,7 +43,7 @@ client.on('message', message => {
 **t/ask {question}** - It'll answer
 **t/kick {@somebody}** - Kick Somebody
 **t/subreddit** - Send you ***OUR***  Subreddit Link
-**t/partner** - Send you ***OUR***  Partner Server's Invite Link
+**t/partners** - Send you ***OUR***  Partner Servers Invite Link
 **t/youtube** - Send you the Owner's YT Channel Link
 **t/twitter** - Send you the Owner's Twitter Link
 **t/reddit** - Send you the Owner's Reddit Link        
@@ -58,8 +58,19 @@ client.on('message', message => {
 		client.commands.get('twitter').execute(message, args);
 	} else if (command == 'ask') {
 		client.commands.get('ask').execute(message, args);
-	} else if (command == 'partner') {
-		client.commands.get('partner').execute(message, args);
+	} else if (command == 'partners') {
+		const anotherEmbed = new Discord.MessageEmbed({
+			title: "Partners",
+			hexColor: "6895ff"
+		});
+
+		anotherEmbed.setDescription(`**1. Gamers Community**:
+https://discord.gg/2m9NPb
+
+**2. Melon Hub**:
+https://discord.gg/pEr3q5F`);
+
+		message.channel.send(anotherEmbed);
 	} else if (command == 'say') {
         client.commands.get('say').execute(message, args);
 	} else if (command == 'reddit') {
