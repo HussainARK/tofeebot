@@ -66,7 +66,10 @@ client.on('message', message => {
 https://discord.gg/2m9NPb
 
 **2. Melon Hub**:
-https://discord.gg/pEr3q5F`);
+https://discord.gg/pEr3q5F
+
+**3. Chilled Gaming**:
+https://discord.gg/NReVszv`);
 
 		message.channel.send(anotherEmbed);
 	} else if (command == 'say') {
