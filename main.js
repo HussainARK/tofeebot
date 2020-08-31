@@ -59,12 +59,10 @@ client.on('message', message => {
 	} else if (command == 'ask') {
 		client.commands.get('ask').execute(message, args);
 	} else if (command == 'partners') {
-		const anotherEmbed = new Discord.MessageEmbed({
-			title: "Partners",
-			hexColor: "6895ff"
-		});
-
-		anotherEmbed.setDescription(`**1. Gamers Community**:
+		const anotherEmbed = new Discord.MessageEmbed()
+			.setTitle("Tofee Hub's Partners")
+			.setColor(0x6895ff)
+            .setDescription(`**1. Gamers Community**:
 https://discord.gg/2m9NPb
 
 **2. Melon Hub**:
