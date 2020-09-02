@@ -44,8 +44,8 @@ client.on("message", (message) => {
 		const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
 			.setDescription(`These are commands that you can use:\n
 ***Fun*** :
-  	**t/say {something}** - Say Something
-	  **t/ask {question}** - It'll answer
+	**t/say {something}** - Say Something
+	**t/ask {question}** - It'll answer
   	**t/poll {question}** - Make a Poll!
 
 ***Music*** *(In Development)* :
@@ -60,7 +60,7 @@ client.on("message", (message) => {
     **t/subreddit** - Send you ***OUR***  Subreddit Link
     **t/partners** - Send you ***OUR***  Partner Servers Invite Link
     **t/youtube** - Send you the Owner's YT Channel Link
-  	**t/twitter** - Send you the Owner's Twitter Link
+	**t/twitter** - Send you the Owner's Twitter Link
   	**t/reddit** - Send you the Owner's Reddit Link 
 `);
 
@@ -108,12 +108,8 @@ https://discord.gg/NReVszv`);
 
 			const play = (connection, message) => {
 				const server = servers[message.guild.id];
-				
-				let songUrl = '';
-				
-				yts(server.queue[0]).then(result => songUrl = result.videos[0].url);
-				
-				setTimeout(() => {
+
+				yts(server.queue[0]).then(result => result.videos[0].url).then(songUrl => {
 					server.dispatcher = connection.play(ytdl(songUrl), {filter: 'audioonly'});
 
 					server.queue.shift();
@@ -125,7 +121,7 @@ https://discord.gg/NReVszv`);
 							connection.disconnect();
 						}
 					});
-				}, 0);
+				});
 			};
 
 			if (!servers[message.guild.id])
