@@ -112,7 +112,7 @@ https://discord.gg/NReVszv`);
 				yts(server.queue[0]).then(result => result.videos[0].url).then(songUrl => {
 					server.dispatcher = connection.play(ytdl(songUrl), {filter: 'audioonly'});
 
-					message.channel.send("Playing " + songUrl);
+					message.channel.send("Added  " + songUrl);
 
 					server.queue.shift();
 
@@ -141,6 +141,26 @@ https://discord.gg/NReVszv`);
 				});
 			}
 		}
+	} else if (command == "skip") {
+		let server = server[message.guild.id];
+
+		message.channel.send('Skipping...');
+
+		if(server.dispatcher) return server.dispatcher.end();
+	} else if (command == "skip") {
+		let server = server[message.guild.id];
+
+		if(message.guild.voice.connection) {
+			for (let i = server.queue.length - 1; i >= 0; i--) {
+				server.queue.splice(i, 1);
+			}
+		}
+
+		message.channel.send('Goodb ye');
+
+		server.dispatcher.end();
+
+		if (message.guild.voice.connection) return message.guild.voice.connection.disconnect();
 	} else if (command == "poll") {
 		if (!args[0]) return message.channel.send("Really Bruh");
 		else {
