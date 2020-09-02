@@ -85,7 +85,7 @@ https://discord.gg/NReVszv`);
 		if (!args) return message.channel.send("Really Bruh");
 		else {
 			const pollEmbed = new Discord.MessageEmbed()
-			    .setTitle(args.slice(1).join(" "))
+			    .setTitle(args.join(" "))
 		 	    .setColor(0x6895ff)
 			message.channel.send(pollEmbed).then(messageReaction => {
 				messageReaction.react("👍");
