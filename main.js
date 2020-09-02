@@ -116,7 +116,7 @@ https://discord.gg/NReVszv`);
 							connection.disconnect();
 						}
 					});
-				});
+				}).catch(err => console.log(err));
 			};
 
 			if (!servers[message.guild.id])
