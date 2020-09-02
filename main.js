@@ -38,17 +38,22 @@ client.on('message', message => {
         .setTitle('Help')
         .setColor(0x00ceff)
         .setDescription(`These are commands that you can use:\n
-**t/help** - Send this Message
-**t/say {something}** - Say Something
-**t/ask {question}** - It'll answer
-**t/poll {question}** - Make a Poll!
-**t/kick {@somebody}** - Kick Somebody {Owner/Moderator}
-**t/subreddit** - Send you ***OUR***  Subreddit Link
-**t/partners** - Send you ***OUR***  Partner Servers Invite Link
-**t/youtube** - Send you the Owner's YT Channel Link
-**t/twitter** - Send you the Owner's Twitter Link
-**t/reddit** - Send you the Owner's Reddit Link        
-        `);
+***Fun*** :
+    **t/say {something}** - Say Something
+    **t/ask {question}** - It'll answer
+	**t/poll {question}** - Make a Poll!
+	**t/play** - *Coming Soon*
+
+***Management*** :
+    **t/kick {@somebody}** - Kick Somebody {Owner/Moderator}
+
+***Pages***:
+    **t/subreddit** - Send you ***OUR***  Subreddit Link
+    **t/partners** - Send you ***OUR***  Partner Servers Invite Link
+    **t/youtube** - Send you the Owner's YT Channel Link
+    **t/twitter** - Send you the Owner's Twitter Link
+	**t/reddit** - Send you the Owner's Reddit Link        
+`);
 
     message.channel.send(embed);
 	} else if (command == 'youtube') {
