@@ -97,7 +97,7 @@ https://discord.gg/NReVszv`);
 	} else if (command == "play") {
 		if (!args[0])
 			return message.channel.send(
-				"[Softly] Can you tell me wtf should i play?"
+				"[Softly] Can you tell me wtf should I play?"
 			);
 		else {
 			if (!message.member.voice.channel) {
