@@ -112,6 +112,8 @@ https://discord.gg/NReVszv`);
 				yts(server.queue[0]).then(result => result.videos[0].url).then(songUrl => {
 					server.dispatcher = connection.play(ytdl(songUrl), {filter: 'audioonly'});
 
+					message.channel.send("Playing " + songUrl);
+
 					server.queue.shift();
 
 					server.dispatcher.on('end', () => {
