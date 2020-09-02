@@ -108,10 +108,10 @@ https://discord.gg/NReVszv`);
 
 			const play = (connection, message) => {
 				const server = servers[message.guild.id];
+				
 				let songUrl = '';
-				(() => {
-					yts(server.queue[0]).then(result => songUrl = result.videos[0].url);
-				})()
+				
+				yts(server.queue[0]).then(result => songUrl = result.videos[0].url);
 				
 				setTimeout(() => {
 					server.dispatcher = connection.play(ytdl(songUrl), {filter: 'audioonly'});
