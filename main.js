@@ -79,7 +79,7 @@ https://discord.gg/NReVszv`);
 		client.commands.get('reddit').execute(message, args);
 	} else if (command == 'subreddit') {
 		client.commands.get('subreddit').execute(message, args);
-	} else if (command == 'hello' || 'hi' || 'hey') {
+	} else if (command == 'hey') {
         client.commands.get('hello').execute(message, args);
     } else if (command == 'poll') {
 		if (!args) return message.channel.send("Really Bruh");
