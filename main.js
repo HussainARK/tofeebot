@@ -48,7 +48,7 @@ client.on("message", (message) => {
 	  **t/ask {question}** - It'll answer
   	**t/poll {question}** - Make a Poll!
 
-***Music*** *In Development* :
+***Music*** *(In Development)* :
 		**t/play {song}** - Plays a Song or Add a New One to the Queue
 		**t/skip** - Skip the Current Song
     **t/leave** - Leaves the Voice Channel
@@ -109,7 +109,7 @@ https://discord.gg/NReVszv`);
 			const play = (connection, message) => {
 				const server = servers[message.guild.id];
 				yts(server.queue[0]).then(result => {
-					server.dispatcher = connection.playStream(ytdl(result.videos[0].url, {filter: 'audioonly'}));
+					server.dispatcher = connection.play(ytdl(result.videos[0].url, {filter: 'audioonly'}));
 
 					server.queue.shift();
 
@@ -133,7 +133,7 @@ https://discord.gg/NReVszv`);
 			server.queue.push(args[0]);
 
 			if (!message.member.voice.connection) {
-				message.member.voice.channel.join().then((connection) => {
+				message.member.voice.channel.join().then(connection => {
 					play(connection, message);
 				});
 			}
