@@ -15,42 +15,42 @@ const servers = {};
 client.commands = new Discord.Collection();
 
 const commandFiles = fs
-	.readdirSync("./commands")
-	.filter((file) => file.endsWith(".js"));
+  .readdirSync("./commands")
+  .filter((file) => file.endsWith(".js"));
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
+  const command = require(`./commands/${file}`);
 
-	client.commands.set(command.name, command);
+  client.commands.set(command.name, command);
 }
 
 client.once("ready", () => {
-	console.log("TofeeBot is Online!");
-	client.user.setPresence({
-		status: "online",
-		activity: {
-			name: "t/help",
-			type: "WATCHING",
-		},
-	});
+  console.log("TofeeBot is Online!");
+  client.user.setPresence({
+    status: "online",
+    activity: {
+      name: "t/help",
+      type: "WATCHING",
+    },
+  });
 });
 
 client.on("message", (message) => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-	const args = message.content.slice(prefix.length).split(/ +/);
-	const command = args.shift().toLowerCase();
+  const args = message.content.slice(prefix.length).split(/ +/);
+  const command = args.shift().toLowerCase();
 
-	if (command === "help") {
-		const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
-			.setDescription(`These are commands that you can use:\n
+  if (command === "help") {
+    const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
+      .setDescription(`These are commands that you can use:\n
 ***Fun*** :
-	  **t/say {something}** - Say Something
-	  **t/ask {question}** - It'll answer
-  	**t/poll {question}** - Make a Poll!
+    **t/say {something}** - Say Something
+    **t/ask {question}** - It'll answer
+    **t/poll {question}** - Make a Poll!
 
-***Music*** :
-		**t/play {song}** - Plays a Song or Add a New One to the Queue
-		**t/skip** - Skip the Current Song
+***Music*** *(Beta)* :
+    **t/play {song}** - Plays a Song or Add a New One to the Queue
+    **t/skip** - Skip the Current Song
     **t/leave** - Leaves the Voice Channel
 
 ***Management*** :
@@ -60,23 +60,22 @@ client.on("message", (message) => {
     **t/subreddit** - Send you ***OUR***  Subreddit Link
     **t/partners** - Send you ***OUR***  Partner Servers Invite Link
     **t/youtube** - Send you the Owner's YT Channel Link
-	  **t/twitter** - Send you the Owner's Twitter Link
-  	**t/reddit** - Send you the Owner's Reddit Link 
-`);
+    **t/twitter** - Send you the Owner's Twitter Link
+    **t/reddit** - Send you the Owner's Reddit Link`);
 
-	message.channel.send(embed);
-	} else if (command == "youtube") {
-		client.commands.get("youtube").execute(message, args);
-	} else if (command == "kick") {
-		client.commands.get("kick").execute(message, args);
-	} else if (command == "twitter") {
-		client.commands.get("twitter").execute(message, args);
-	} else if (command == "ask") {
-		client.commands.get("ask").execute(message, args);
-	} else if (command == "partners") {
-		const anotherEmbed = new Discord.MessageEmbed()
-			.setTitle("Tofee Hub's Partners")
-			.setColor(0x6895ff).setDescription(`**1. Gamers Community**:
+  message.channel.send(embed);
+  } else if (command == "youtube") {
+    client.commands.get("youtube").execute(message, args);
+  } else if (command == "kick") {
+    client.commands.get("kick").execute(message, args);
+  } else if (command == "twitter") {
+    client.commands.get("twitter").execute(message, args);
+  } else if (command == "ask") {
+    client.commands.get("ask").execute(message, args);
+  } else if (command == "partners") {
+    const anotherEmbed = new Discord.MessageEmbed()
+      .setTitle("Tofee Hub's Partners")
+      .setColor(0x6895ff).setDescription(`**1. Gamers Community**:
 https://discord.gg/2m9NPb
 
 **2. Melon Hub**:
@@ -85,96 +84,96 @@ https://discord.gg/pEr3q5F
 **3. Chilled Gaming**:
 https://discord.gg/NReVszv`);
 
-	message.channel.send(anotherEmbed);
-	} else if (command == "say") {
-		client.commands.get("say").execute(message, args);
-	} else if (command == "reddit") {
-		client.commands.get("reddit").execute(message, args);
-	} else if (command == "subreddit") {
-		client.commands.get("subreddit").execute(message, args);
-	} else if (command == "hey") {
-		client.commands.get("hello").execute(message, args);
-	} else if (command == "play") {
-		if (!args[0])
-			return message.channel.send(
-				"[Softly] Can you tell me wtf should I play?"
-			);
-		else {
-			if (!message.member.voice.channel) {
-				return message.channel.send(
-					"Where the f*** should I play Music? PLEASE ENTER A VOICE CHANNEL"
-				);
-			}
+  message.channel.send(anotherEmbed);
+  } else if (command == "say") {
+    client.commands.get("say").execute(message, args);
+  } else if (command == "reddit") {
+    client.commands.get("reddit").execute(message, args);
+  } else if (command == "subreddit") {
+    client.commands.get("subreddit").execute(message, args);
+  } else if (command == "hey") {
+    client.commands.get("hello").execute(message, args);
+  } else if (command == "play") {
+    if (!args[0])
+      return message.channel.send(
+        "[Softly] Can you tell me wtf should I play?"
+      );
+    else {
+      if (!message.member.voice.channel) {
+        return message.channel.send(
+          "Where the f*** should I play Music? PLEASE ENTER A VOICE CHANNEL"
+        );
+      }
 
-			const play = (connection, message) => {
-				const server = servers[message.guild.id];
+      const play = (connection, message) => {
+        const server = servers[message.guild.id];
 
-				yts(server.queue[0]).then(result => result.videos[0].url).then(songUrl => {
-					server.dispatcher = connection.play(ytdl(songUrl), {filter: 'audioonly'});
+        yts(server.queue[0]).then(result => result.videos[0].url).then(songUrl => {
+          server.dispatcher = connection.play(ytdl(songUrl), {filter: 'audioonly'});
 
-					message.channel.send("Added  " + songUrl);
+          message.channel.send("Added  " + songUrl);
 
-					server.queue.shift();
+          server.queue.shift();
 
-					server.dispatcher.on('end', () => {
-						if (server.queue[0]) {
-							play(connection, message)
-						} else {
-							connection.disconnect();
-						}
-					});
-				});
-			};
+          server.dispatcher.on('end', () => {
+            if (server.queue[0]) {
+              play(connection, message)
+            } else {
+              connection.disconnect();
+            }
+          });
+        });
+      };
 
-			if (!servers[message.guild.id])
-				servers[message.guild.id] = {
-					queue: [],
-				};
+      if (!servers[message.guild.id])
+        servers[message.guild.id] = {
+          queue: [],
+        };
 
-			const server = servers[message.guild.id];
+      const server = servers[message.guild.id];
 
-			server.queue.push(args.join(' '));
+      server.queue.push(args.join(' '));
 
-			if (!message.member.voice.connection) {
-				message.member.voice.channel.join().then(connection => {
-					play(connection, message);
-				});
-			}
-		}
-	} else if (command == "skip") {
-		let server = server[message.guild.id];
+      if (!message.member.voice.connection) {
+        message.member.voice.channel.join().then(connection => {
+          play(connection, message);
+        });
+      }
+    }
+  } else if (command == "skip") {
+    let server = server[message.guild.id];
 
-		message.channel.send('Skipping...');
+    message.channel.send('Skipping...');
 
-		if(server.dispatcher) return server.dispatcher.end();
-	} else if (command == "leave") {
-		let server = server[message.guild.id];
+    if(server.dispatcher) return server.dispatcher.end();
+  } else if (command == "leave") {
+    let server = server[message.guild.id];
 
-		if(message.guild.voice.connection) {
-			for (let i = server.queue.length - 1; i >= 0; i--) {
-				server.queue.splice(i, 1);
-			}
-		}
+    if(message.guild.voice.connection) {
+      for (let i = server.queue.length - 1; i >= 0; i--) {
+        server.queue.splice(i, 1);
+      }
+    }
 
-		message.channel.send('Goodb ye');
+    message.channel.send('Goodb ye');
 
-		server.dispatcher.end();
+    server.dispatcher.end();
 
-		if (message.guild.voice.connection) return message.guild.voice.connection.disconnect();
-	} else if (command == "poll") {
-		if (!args[0]) return message.channel.send("Really Bruh");
-		else {
-			const pollEmbed = new Discord.MessageEmbed()
-				.setTitle(args.join(" "))
-				.setColor(0x6895ff);
-			message.channel.send(pollEmbed).then((messageReaction) => {
-				messageReaction.react("👍");
-				messageReaction.react("👎");
-			});
-		}
-	} else {
-		message.channel.send("Bruh what did you say?");
-	}
+    if (message.member.voice.connection) return message.guild.voice.connection.disconnect();
+  } else if (command == "poll") {
+    if (!args[0]) return message.channel.send("Really Bruh");
+    else {
+      const pollEmbed = new Discord.MessageEmbed()
+        .setTitle(args.join(" "))
+        .setColor(0x6895ff);
+      message.channel.send(pollEmbed).then((messageReaction) => {
+        messageReaction.react("👍");
+        messageReaction.react("👎");
+      });
+    }
+  } else {
+    message.channel.send("Bruh what did you say?");
+  }
 });
 
 client.login(process.env.TOKEN);
