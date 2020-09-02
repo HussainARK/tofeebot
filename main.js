@@ -133,7 +133,7 @@ https://discord.gg/NReVszv`);
 
 			const server = servers[message.guild.id];
 
-			server.queue.push(args[0]);
+			server.queue.push(args.join(' '));
 
 			if (!message.member.voice.connection) {
 				message.member.voice.channel.join().then(connection => {
