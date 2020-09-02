@@ -102,10 +102,11 @@ https://discord.gg/NReVszv`);
 				);
 			}
 
-			const play = async (connection, message) => {
+			const play = (connection, message) => {
 				const server = servers[message.guild.id];
-				const songUrl = (await yts(server.queue[0])).videos[0].url;
-				server.dispatcher = connection.playStream(ytdl(songUrl, {filter: 'audioonly'}));
+				yts(server.queue[0]).then(result => {
+					server.dispatcher = connection.playStream(ytdl(result.videos[0].url, {filter: 'audioonly'}));
+				});
 
 				server.queue.shift();
 
