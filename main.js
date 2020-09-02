@@ -82,7 +82,7 @@ https://discord.gg/NReVszv`);
 	} else if (command == 'hey') {
         client.commands.get('hello').execute(message, args);
     } else if (command == 'poll') {
-		if (!args) return message.channel.send("Really Bruh");
+		if (!args[0]) return message.channel.send("Really Bruh");
 		else {
 			const pollEmbed = new Discord.MessageEmbed()
 			    .setTitle(args.join(" "))
