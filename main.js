@@ -44,11 +44,11 @@ client.on("message", (message) => {
 		const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
 			.setDescription(`These are commands that you can use:\n
 ***Fun*** :
-	**t/say {something}** - Say Something
-	**t/ask {question}** - It'll answer
+	  **t/say {something}** - Say Something
+	  **t/ask {question}** - It'll answer
   	**t/poll {question}** - Make a Poll!
 
-***Music*** *(In Development)* :
+***Music*** :
 		**t/play {song}** - Plays a Song or Add a New One to the Queue
 		**t/skip** - Skip the Current Song
     **t/leave** - Leaves the Voice Channel
@@ -60,7 +60,7 @@ client.on("message", (message) => {
     **t/subreddit** - Send you ***OUR***  Subreddit Link
     **t/partners** - Send you ***OUR***  Partner Servers Invite Link
     **t/youtube** - Send you the Owner's YT Channel Link
-	**t/twitter** - Send you the Owner's Twitter Link
+	  **t/twitter** - Send you the Owner's Twitter Link
   	**t/reddit** - Send you the Owner's Reddit Link 
 `);
 
@@ -147,7 +147,7 @@ https://discord.gg/NReVszv`);
 		message.channel.send('Skipping...');
 
 		if(server.dispatcher) return server.dispatcher.end();
-	} else if (command == "skip") {
+	} else if (command == "leave") {
 		let server = server[message.guild.id];
 
 		if(message.guild.voice.connection) {
