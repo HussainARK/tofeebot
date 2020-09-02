@@ -86,6 +86,8 @@ https://discord.gg/NReVszv`);
 		client.commands.get('subreddit').execute(message, args);
 	} else if (command == 'hey') {
         client.commands.get('hello').execute(message, args);
+    } else if (command == 'play') {
+        message.channel.send('Bruh This command is in Development, just be patient wtf');
     } else if (command == 'poll') {
 		if (!args[0]) return message.channel.send("Really Bruh");
 		else {
