@@ -108,19 +108,19 @@ https://discord.gg/NReVszv`);
 
 			const play = (connection, message) => {
 				const server = servers[message.guild.id];
-				yts(server.queue[0]).then(result => {
-					server.dispatcher = connection.play(ytdl(result.videos[0].url, {filter: 'audioonly'}));
+				// yts(server.queue[0]).then(result => {
+				server.dispatcher = connection.play(ytdl(server.queue[0]/*result.videos[0].url*/, {filter: 'audioonly'}));
 
-					server.queue.shift();
+				server.queue.shift();
 
-					server.dispatcher.on('end', () => {
-						if (server.queue[0]) {
-							play(connection, message)
-						} else {
-							connection.disconnect();
-						}
-					});
-				}).catch(err => console.log(err));
+				server.dispatcher.on('end', () => {
+					if (server.queue[0]) {
+						play(connection, message)
+					} else {
+						connection.disconnect();
+					}
+				});
+			// }).catch(err => console.log(err));
 			};
 
 			if (!servers[message.guild.id])
