@@ -42,7 +42,7 @@ client.on('message', message => {
     **t/say {something}** - Say Something
     **t/ask {question}** - It'll answer
 	**t/poll {question}** - Make a Poll!
-	**t/play** - *Coming Soon*
+	**t/play {song}** - *Coming Soon*
 
 ***Management*** :
     **t/kick {@somebody}** - Kick Somebody {Owner/Moderator}
