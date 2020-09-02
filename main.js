@@ -44,10 +44,14 @@ client.on("message", (message) => {
 		const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
 			.setDescription(`These are commands that you can use:\n
 ***Fun*** :
-	**t/say {something}** - Say Something
-	**t/ask {question}** - It'll answer
-	**t/poll {question}** - Make a Poll!
-	**t/play {song}** - *Coming Soon*
+  	**t/say {something}** - Say Something
+	  **t/ask {question}** - It'll answer
+  	**t/poll {question}** - Make a Poll!
+
+***Music*** *In Development* :
+		**t/play {song}** - Plays a Song or Add a New One to the Queue
+		**t/skip** - Skip the Current Song
+    **t/leave** - Leaves the Voice Channel
 
 ***Management*** :
     **t/kick {@somebody}** - Kick Somebody {Owner/Moderator}
@@ -56,8 +60,8 @@ client.on("message", (message) => {
     **t/subreddit** - Send you ***OUR***  Subreddit Link
     **t/partners** - Send you ***OUR***  Partner Servers Invite Link
     **t/youtube** - Send you the Owner's YT Channel Link
-	**t/twitter** - Send you the Owner's Twitter Link
-	**t/reddit** - Send you the Owner's Reddit Link 
+  	**t/twitter** - Send you the Owner's Twitter Link
+  	**t/reddit** - Send you the Owner's Reddit Link 
 `);
 
 	message.channel.send(embed);
@@ -110,7 +114,7 @@ https://discord.gg/NReVszv`);
 					server.queue.shift();
 
 					server.dispatcher.on('end', () => {
-						if (server.queue0[0]) {
+						if (server.queue[0]) {
 							play(connection, message)
 						} else {
 							connection.disconnect();
