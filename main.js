@@ -41,7 +41,8 @@ client.on('message', message => {
 **t/help** - Send this Message
 **t/say {something}** - Say Something
 **t/ask {question}** - It'll answer
-**t/kick {@somebody}** - Kick Somebody
+**t/poll {question}** - Make a Poll!
+**t/kick {@somebody}** - Kick Somebody {Owner/Moderator}
 **t/subreddit** - Send you ***OUR***  Subreddit Link
 **t/partners** - Send you ***OUR***  Partner Servers Invite Link
 **t/youtube** - Send you the Owner's YT Channel Link
@@ -80,6 +81,17 @@ https://discord.gg/NReVszv`);
 		client.commands.get('subreddit').execute(message, args);
 	} else if (command == 'hello' || 'hi' || 'hey') {
         client.commands.get('hello').execute(message, args);
+    } else if (command == 'poll') {
+		if (!args) return message.channel.send("Really Bruh");
+		else {
+			const pollEmbed = new Discord.MessageEmbed()
+			    .setTitle(args.slice(1).join(" "))
+		 	    .setColor(0x6895ff)
+			message.channel.send(pollEmbed).then(messageReaction => {
+				messageReaction.react("👍");
+				messageReaction.react("👎");
+			});
+		}
     } else {
 		message.channel.send('Bruh what did you say?');
 	}
