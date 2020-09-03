@@ -4,13 +4,11 @@ const fs = require("fs");
 const yts = require("yt-search");
 const ytdl = require("ytdl-core");
 
-// yts('ussr anthem').then(data => console.log(data))
-
 const client = new Discord.Client();
 
 const prefix = "t/";
 
-const servers = {};
+let servers = {};
 
 client.commands = new Discord.Collection();
 
@@ -48,7 +46,7 @@ client.on("message", (message) => {
     **t/ask {question}** - It'll answer
     **t/poll {question}** - Make a Poll!
 
-***Music*** *(Beta)* :
+***Music*** *(In Development)* :
     **t/play {song}** - Plays a Song or Add a New One to the Queue
     **t/skip** - Skip the Current Song
     **t/leave** - Leaves the Voice Channel
@@ -98,48 +96,49 @@ https://discord.gg/NReVszv`);
       return message.channel.send(
         "[Softly] Can you tell me wtf should I play?"
       );
-    else {
-      if (!message.member.voice.channel) {
-        return message.channel.send(
-          "Where the f*** should I play Music? PLEASE ENTER A VOICE CHANNEL"
-        );
-      }
-
-      const play = (connection, message) => {
-        const server = servers[message.guild.id];
-
-        yts(server.queue[0]).then(result => result.videos[0].url).then(songUrl => {
-          server.dispatcher = connection.play(ytdl(songUrl), {filter: 'audioonly'});
-
-          message.channel.send("Added  " + songUrl);
-
-          server.queue.shift();
-
-          server.dispatcher.on('end', () => {
-            if (server.queue[0]) {
-              play(connection, message)
-            } else {
-              connection.disconnect();
-            }
-          });
-        });
-      };
-
-      if (!servers[message.guild.id])
-        servers[message.guild.id] = {
-          queue: [],
-        };
-
-      const server = servers[message.guild.id];
-
-      server.queue.push(args.join(' '));
-
-      if (!message.member.voice.connection) {
-        message.member.voice.channel.join().then(connection => {
-          play(connection, message);
-        });
-      }
+    
+    if (!message.member.voice.channel) {
+      return message.channel.send(
+        "Where the f*** should I play Music? PLEASE ENTER A VOICE CHANNEL"
+      );
     }
+
+    const play = (connection, message) => {
+      let server = servers[message.guild.id];
+
+      // yts(server.queue[0]).then(result => result.videos[0].url).then(songUrl => {
+      server.dispatcher = connection.play(ytdl(server.queue[0]/*songUrl*/), {filter: 'audioonly'});
+
+      message.channel.send("Added  " + songUrl);
+
+      server.queue.shift();
+
+      server.dispatcher.on('end', () => {
+        if (server.queue[0]) {
+          play(connection, message)
+        } else {
+          connection.disconnect();
+        }
+      });
+      // });
+    };
+
+    if (!servers[message.guild.id]) {
+      servers[message.guild.id] = {
+        queue: [],
+      };
+    }
+
+    let server = servers[message.guild.id];
+
+    server.queue.push(args[0]/*.join(' ')*/);
+
+    if (!message.member.voice.connection) {
+      message.member.voice.channel.join().then(connection => {
+        play(connection, message);
+      });
+    }
+
   } else if (command == "skip") {
     let server = server[message.guild.id];
 
@@ -159,7 +158,9 @@ https://discord.gg/NReVszv`);
 
     server.dispatcher.end();
 
-    if (message.member.voice.connection) return message.guild.voice.connection.disconnect();
+    if (message.guild.connection) {
+      return message.guild.voice.connection.disconnect();
+    }
   } else if (command == "poll") {
     if (!args[0]) return message.channel.send("Really Bruh");
     else {
