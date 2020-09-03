@@ -47,7 +47,8 @@ client.on("message", (message) => {
     **t/poll {question}** - Make a Poll!
 
 ***Management*** :
-    **t/kick {@somebody}** - Kick Somebody {Owner/Moderator}
+    **t/kick {@somebody}** - Kick Somebody (Owner/Moderator Use Only)
+    **t/ban {@somebody}** - Ban Somebody (Owner/Moderator Use Only)
 
 ***Pages***:
     **t/subreddit** - Send you ***OUR***  Subreddit Link
@@ -61,6 +62,8 @@ client.on("message", (message) => {
     client.commands.get("youtube").execute(message, args);
   } else if (command == "kick") {
     client.commands.get("kick").execute(message, args);
+  } else if (command == "ban") {
+    client.commands.get("ban").execute(message, args);
   } else if (command == "twitter") {
     client.commands.get("twitter").execute(message, args);
   } else if (command == "ask") {
