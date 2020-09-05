@@ -50,7 +50,7 @@ client.on("message", (message) => {
     **t/kick {@somebody}** - Kick Somebody (Owner/Moderator Use Only)
     **t/ban {@somebody}** - Ban Somebody (Owner/Moderator Use Only)
 
-***Pages***:
+***Other***:
     **t/subreddit** - Send you ***OUR***  Subreddit Link
     **t/partners** - Send you ***OUR***  Partner Servers Invite Link
     **t/youtube** - Send you the Owner's YT Channel Link

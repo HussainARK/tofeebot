@@ -1,6 +1,6 @@
 module.exports = {
     name: "ban",
-    description: 'ban somebody outta the server',
+    description: 'ban somebody in server',
     execute(message, args) {
         if (message.member.roles.cache.has('743503619281780756' || '743504186498351125')) {
             const member = message.mentions.members.first();
