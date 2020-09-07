@@ -73,7 +73,8 @@ client.on("message", (message) => {
     const welcomeEmbed = new Discord.MessageEmbed().setTitle("Welcome!").setColor(0x00ceff).setDescription(
 `Welcome to **Tofee Hub**!
 Have a Great Time! Hope You Enjoy!`
-    ).setAuthor('Tofee Bot', 'https://media.discordapp.net/attachments/651353636823105539/751437841954766938/Logo.gif');
+    ).setFooter('- Tofee Bot');
+    
     message.channel.send(welcomeEmbed);
   } else if (command == "partners") {
     const anotherEmbed = new Discord.MessageEmbed()
