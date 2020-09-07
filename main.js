@@ -42,6 +42,7 @@ client.on("message", (message) => {
     const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
       .setDescription(`These are commands that you can use:\n
 ***Fun*** :
+    **t/wel** - Welcome a New Members
     **t/say {something}** - Say Something
     **t/ask {question}** - It'll answer
     **t/poll {question}** - Make a Poll!
@@ -68,6 +69,12 @@ client.on("message", (message) => {
     client.commands.get("twitter").execute(message, args);
   } else if (command == "ask") {
     client.commands.get("ask").execute(message, args);
+  } else if (command == "wel") {
+    const welcomeEmbed = Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff).setDescription(
+`Welcome to **Tofee Hub**!
+Have a Great Time! Hope You Enjoy!`
+    ).setFooter("TofeeBot");
+    message.channel.send(welcomeEmbed);
   } else if (command == "partners") {
     const anotherEmbed = new Discord.MessageEmbed()
       .setTitle("Tofee Hub's Partners")
