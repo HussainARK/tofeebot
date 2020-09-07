@@ -70,7 +70,7 @@ client.on("message", (message) => {
   } else if (command == "ask") {
     client.commands.get("ask").execute(message, args);
   } else if (command == "wel") {
-    const welcomeEmbed = Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff).setDescription(
+    const welcomeEmbed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff).setDescription(
 `Welcome to **Tofee Hub**!
 Have a Great Time! Hope You Enjoy!`
     ).setFooter("TofeeBot");
