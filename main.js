@@ -70,10 +70,10 @@ client.on("message", (message) => {
   } else if (command == "ask") {
     client.commands.get("ask").execute(message, args);
   } else if (command == "wel") {
-    const welcomeEmbed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff).setDescription(
+    const welcomeEmbed = new Discord.MessageEmbed().setTitle("Welcome!").setColor(0x00ceff).setDescription(
 `Welcome to **Tofee Hub**!
 Have a Great Time! Hope You Enjoy!`
-    ).setFooter("TofeeBot");
+    ).setFooter("- TofeeBot").setImage('https://media.discordapp.net/attachments/651353636823105539/751437841954766938/Logo.gif');
     message.channel.send(welcomeEmbed);
   } else if (command == "partners") {
     const anotherEmbed = new Discord.MessageEmbed()
@@ -85,7 +85,23 @@ https://discord.gg/2m9NPb
 https://discord.gg/pEr3q5F
 
 **3. Chilled Gaming**:
-https://discord.gg/NReVszv`);
+https://discord.gg/NReVszv
+
+**4. The Differix Fort**:
+https://discord.gg/YRdS4EM
+
+**5. a crumb of seretonin pls**:
+https://discord.gg/t6Vu9E5
+
+**6. cv's bakery**:
+https://discord.gg/6vURWhh
+
+**7. gb**:
+https://discord.gg/9bEZDUB
+
+**8. The House**:
+https://discord.gg/x5XAc64
+`);
 
   message.channel.send(anotherEmbed);
   } else if (command == "say") {
