@@ -2,8 +2,8 @@ const randomPuppy = require('random-puppy');
 const snekfetch = require('snekfetch');
 
 module.exports = {
-	name: "say",
-	description: 'Say Something',
+	name: "meme",
+	description: 'Send a Meme lmao',
 	execute(message, args) {
 		const subreddits = [
             "AdviceAnimals",
