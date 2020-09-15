@@ -51,7 +51,6 @@ These are commands that you can use:\n
     **t/say {something}** - Say Something
     **t/ask {yes/no question}** - It'll answer
     **t/poll {question}** - Make a Poll!
-    **t/meme** - Get a Meme from Reddit
 
 ***Management***  (Only For Users With A Role named **Moderator**):
     **t/kick {@somebody}** - Kick Somebody
@@ -79,8 +78,8 @@ Have a Great Time! Hope You Enjoy!`
     client.commands.get("say").execute(message, args);
   } else if (command == "hello") {
     client.commands.get("hello").execute(message, args);
-  } else if (command == "meme") {
-    client.commands.get("meme").execute(message, args);
+  // } else if (command == "meme") {
+    // client.commands.get("meme").execute(message, args);
   } else if (command == "source") {
     client.commands.get("source").execute(message, args);
   } else if (command == "poll") {

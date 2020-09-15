@@ -17,7 +17,8 @@ module.exports = {
             "me_irl",
             "PrequelMemes",
             "terriblefacebookmemes",
-            "PewdiepieSubmissions"
+            "PewdiepieSubmissions",
+            "Tofee"
         ];
         
         const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
