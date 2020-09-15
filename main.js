@@ -34,11 +34,16 @@ client.on("message", (message) => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
+  if (message.content.startsWith("<@748435354398359602>")) {
+    message.channel.send("btw My Prefix is `t/`");
+  }
+
   if (command === "help") {
     const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
-      .setDescription(`These are commands that you can use:\n
+      .setDescription(`My Prefix is \`t/\`, You can't change it lmao.
+These are commands that you can use:\n
 ***Fun*** :
-    **t/wel** - Welcome New Members
+    **t/wel** - Welcome New Members to the Server!
     **t/say {something}** - Say Something
     **t/ask {yes/no question}** - It'll answer
     **t/poll {question}** - Make a Poll!
@@ -61,7 +66,7 @@ client.on("message", (message) => {
     client.commands.get("ask").execute(message, args);
   } else if (command == "wel") {
     const welcomeEmbed = new Discord.MessageEmbed().setTitle("Welcome!").setColor(0x00ceff).setDescription(
-`Welcome to **Tofee Hub**!
+`Welcome to **${message.guild.name}**!
 Have a Great Time! Hope You Enjoy!`
     ).setFooter('Made By Tofee#9999');
     
