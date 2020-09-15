@@ -29,14 +29,16 @@ client.once("ready", () => {
 });
 
 client.on("message", (message) => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-  const args = message.content.slice(prefix.length).split(/ +/);
-  const command = args.shift().toLowerCase();
-
+  if (message.author.bot) return;
+  
   if (message.mentions.members.first().id === "748435354398359602") {
     message.channel.send("btw My Prefix is `t/`");
   }
+  
+  if (!message.content.startsWith(prefix)) return;
+
+  const args = message.content.slice(prefix.length).split(/ +/);
+  const command = args.shift().toLowerCase();
 
   if (command === "help") {
     const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
