@@ -2,16 +2,16 @@ module.exports = {
     name: "ban",
     description: 'ban somebody in server',
     execute(message, args) {
-        if (message.member.roles.cache.has('743503619281780756' || '743504186498351125')) {
+        if (message.member.roles.cache.some(r => r.name === "Moderator")) {
             const member = message.mentions.members.first();
             if (member) {
                 member.ban();
-                message.channel.send('Bro we banned ' + member.user.username);
+                message.channel.send('***We***  banned ' + member.user.username);
             } else {
                 message.channel.send('Bruh Mention Somebody to Ban!');
             }
         } else {
-            message.channel.send('Bruh You have to be a Moderator/Owner to ban People');
+            message.channel.send('Bruh You have to be get a role named "Moderator" to ban People');
         }
     }
 }
