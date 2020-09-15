@@ -1,14 +1,10 @@
 require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require("fs");
-const yts = require("yt-search");
-const ytdl = require("ytdl-core");
 
 const client = new Discord.Client();
 
 const prefix = "t/";
-
-let servers = {};
 
 client.commands = new Discord.Collection();
 
@@ -42,90 +38,55 @@ client.on("message", (message) => {
     const embed = new Discord.MessageEmbed().setTitle("Help").setColor(0x00ceff)
       .setDescription(`These are commands that you can use:\n
 ***Fun*** :
-    **t/wel** - Welcome a New Members
+    **t/wel** - Welcome New Members
     **t/say {something}** - Say Something
-    **t/ask {question}** - It'll answer
+    **t/ask {yes/no question}** - It'll answer
     **t/poll {question}** - Make a Poll!
+    **t/meme** - Get a Meme from Reddit
 
-***Management*** :
-    **t/kick {@somebody}** - Kick Somebody (Owner/Moderator Use Only)
-    **t/ban {@somebody}** - Ban Somebody (Owner/Moderator Use Only)
+***Management***  (Only For Users With A Role named **Moderator**):
+    **t/kick {@somebody}** - Kick Somebody
+    **t/ban {@somebody}** - Ban Somebody
 
 ***Other***:
-    **t/subreddit** - Send you ***OUR***  Subreddit Link
-    **t/partners** - Send you ***OUR***  Partner Servers Invite Link
-    **t/youtube** - Send you the Owner's YT Channel Link
-    **t/twitter** - Send you the Owner's Twitter Link
-    **t/reddit** - Send you the Owner's Reddit Link`);
+    **t/source** - Get the GitHub Page of this Open-Source Discord Bot!
+    ***DM Me for adding More Features To The Bot***`).setFooter('Made By Tofee#9999');
 
   message.channel.send(embed);
-  } else if (command == "youtube") {
-    client.commands.get("youtube").execute(message, args);
   } else if (command == "kick") {
     client.commands.get("kick").execute(message, args);
   } else if (command == "ban") {
     client.commands.get("ban").execute(message, args);
-  } else if (command == "twitter") {
-    client.commands.get("twitter").execute(message, args);
   } else if (command == "ask") {
     client.commands.get("ask").execute(message, args);
   } else if (command == "wel") {
     const welcomeEmbed = new Discord.MessageEmbed().setTitle("Welcome!").setColor(0x00ceff).setDescription(
 `Welcome to **Tofee Hub**!
 Have a Great Time! Hope You Enjoy!`
-    ).setFooter('- Tofee Bot');
+    ).setFooter('Made By Tofee#9999');
     
     message.channel.send(welcomeEmbed);
-  } else if (command == "partners") {
-    const anotherEmbed = new Discord.MessageEmbed()
-      .setTitle("Tofee Hub's Partners")
-      .setColor(0x6895ff).setDescription(`**1. Gamers Community**:
-https://discord.gg/2m9NPb
-
-**2. Melon Hub**:
-https://discord.gg/pEr3q5F
-
-**3. Chilled Gaming**:
-https://discord.gg/NReVszv
-
-**4. The Differix Fort**:
-https://discord.gg/YRdS4EM
-
-**5. a crumb of seretonin pls**:
-https://discord.gg/t6Vu9E5
-
-**6. cv's bakery**:
-https://discord.gg/6vURWhh
-
-**7. gb**:
-https://discord.gg/9bEZDUB
-
-**8. The House**:
-https://discord.gg/x5XAc64
-`);
-
-  message.channel.send(anotherEmbed);
   } else if (command == "say") {
     client.commands.get("say").execute(message, args);
-  } else if (command == "reddit") {
-    client.commands.get("reddit").execute(message, args);
-  } else if (command == "subreddit") {
-    client.commands.get("subreddit").execute(message, args);
-  } else if (command == "hey") {
+  } else if (command == "hello") {
     client.commands.get("hello").execute(message, args);
+  } else if (command == "meme") {
+    client.commands.get("meme").execute(message, args);
+  } else if (command == "source") {
+    client.commands.get("source").execute(message, args);
   } else if (command == "poll") {
     if (!args[0]) return message.channel.send("Really Bruh");
     else {
       const pollEmbed = new Discord.MessageEmbed()
         .setTitle(args.join(" "))
-        .setColor(0x6895ff);
+        .setColor(0x6895ff).setFooter('Made By Tofee#9999');
       message.channel.send(pollEmbed).then((messageReaction) => {
         messageReaction.react("👍");
         messageReaction.react("👎");
       });
     }
   } else {
-    message.channel.send("Bruh what did you say?");
+    message.channel.send("Bruh what did you say? ENTER A REAL COMMAND LMFAO");
   }
 });
 
