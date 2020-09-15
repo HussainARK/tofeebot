@@ -34,7 +34,7 @@ client.on("message", (message) => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if (message.content.startsWith("<@748435354398359602>")) {
+  if (message.mentions.users.first().id === client.user.id) {
     message.channel.send("btw My Prefix is `t/`");
   }
 
