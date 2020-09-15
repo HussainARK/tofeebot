@@ -31,7 +31,7 @@ client.once("ready", () => {
 client.on("message", (message) => {
   if (message.author.bot) return;
   
-  if (message.mentions.members.first().id) {
+  if (message.mentions.members.first()) {
     if (message.mentions.members.first().id === "748435354398359602") {
       message.channel.send("btw My Prefix is `t/`");
     }
