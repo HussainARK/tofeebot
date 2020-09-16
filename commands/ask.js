@@ -18,6 +18,7 @@ module.exports = {
             "***BRUH***",
             "I'll pretend that I didn't read that",
             "Hey Tofee! Look at what This Guy asked!",
+            "tbh I don't care about that"
         ]
 
         message.channel.send(answers[Math.floor(Math.random()*answers.length)]);
