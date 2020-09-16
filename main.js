@@ -48,7 +48,6 @@ client.on("message", (message) => {
 These are commands that you can use:\n
 ***Fun*** :
     **t/wel** - Welcome New Members to the Server!
-    **t/say {something}** - Say Something
     **t/ask {yes/no question}** - It'll answer
     **t/poll {question}** - Make a Poll!
 
@@ -74,8 +73,8 @@ Have a Great Time! Hope You Enjoy!`
     ).setFooter('Made By Tofee#9999');
     
     message.channel.send(welcomeEmbed);
-  } else if (command == "say") {
-    client.commands.get("say").execute(message, args);
+  // } else if (command == "say") {
+  //   client.commands.get("say").execute(message, args);
   } else if (command == "hello") {
     client.commands.get("hello").execute(message, args);
   // } else if (command == "meme") {
