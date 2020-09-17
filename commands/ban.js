@@ -2,7 +2,7 @@ module.exports = {
     name: "ban",
     description: 'ban somebody in server',
     execute(message, args) {
-        if (message.member.roles.cache.some(r => r.name === "Moderator")) {
+        if (message.member.hasPermission(['BAN_MEMBERS'])) {
             const member = message.mentions.members.first();
             if (member) {
                 member.ban();
@@ -11,7 +11,7 @@ module.exports = {
                 message.channel.send('Bruh Mention Somebody to Ban!');
             }
         } else {
-            message.channel.send('Bruh You have to be get a role named "Moderator" to ban People');
+            message.channel.send("How dare you, You wanna ban members without having Permission to do that?");
         }
     }
 }

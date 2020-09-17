@@ -30,7 +30,7 @@ client.once("ready", () => {
 
 client.on("message", (message) => {
   if (message.author.bot) return;
-  
+
   if (message.mentions.members.first()) {
     if (message.mentions.members.first().id === "748435354398359602") {
       message.channel.send("btw My Prefix is `t/`");
@@ -51,7 +51,7 @@ These are commands that you can use:\n
     **t/ask {yes/no question}** - It'll answer
     **t/poll {question}** - Make a Poll!
 
-***Management***  (Only For Users With A Role named **Moderator**):
+***Moderation***:
     **t/kick {@somebody}** - Kick Somebody
     **t/ban {@somebody}** - Ban Somebody
 
