@@ -84,8 +84,12 @@ Have a Great Time! Hope You Enjoy!`
   } else if (command == "poll") {
     if (!args[0]) return message.channel.send("Really Bruh");
     else {
+      const pollText = args.join(" ");
+      
+      if (pollText.length > 50) return message.channel.send("that's too much lmfao");
+      
       const pollEmbed = new Discord.MessageEmbed()
-        .setTitle(args.join(" "))
+        .setTitle("📝" + pollText)
         .setColor(0x6895ff).setFooter('Made By Tofee#9999');
       message.channel.send(pollEmbed).then((messageReaction) => {
         messageReaction.react("👍");
