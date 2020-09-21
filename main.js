@@ -57,7 +57,8 @@ These are commands that you can use:\n
 
 ***Other***:
     **t/source** - Get the GitHub Page of this Open-Source Discord Bot!
-    ***DM Me for adding More Features To The Bot***`).setFooter('Made By Tofee#9999');
+    **t/invite** - Invite Tofee Bot to Other Servers
+    ***DM Me to improve the Bot***`).setFooter('Made By Tofee#9999');
 
   message.channel.send(embed);
   } else if (command == "kick") {
@@ -66,6 +67,8 @@ These are commands that you can use:\n
     client.commands.get("ban").execute(message, args);
   } else if (command == "ask") {
     client.commands.get("ask").execute(message, args);
+  } else if (command == "invite") {
+    message.channel.send('Invite Me lmao https://discord.com/oauth2/authorize?client_id=748435354398359602&scope=bot');
   } else if (command == "wel") {
     const welcomeEmbed = new Discord.MessageEmbed().setTitle("Welcome!").setColor(0x00ceff).setDescription(
 `Welcome to **${message.guild.name}**!
@@ -89,7 +92,7 @@ Have a Great Time! Hope You Enjoy!`
       if (pollText.length > 50) return message.channel.send("that's too much lmfao");
       
       const pollEmbed = new Discord.MessageEmbed()
-        .setTitle("📝" + pollText)
+        .setTitle("📝 " + pollText)
         .setColor(0x6895ff).setFooter('Made By Tofee#9999');
       message.channel.send(pollEmbed).then((messageReaction) => {
         messageReaction.react("👍");
