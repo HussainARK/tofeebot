@@ -72,7 +72,8 @@ These are commands that you can use:\n
     const inviteEmbed = new Discord.MessageEmbed()
       .setURL("https://discord.com/oauth2/authorize?client_id=748435354398359602&scope=bot")
       .setTitle("Invite Me")
-      .setDescription('Invite Me or idc lol');
+      .setDescription('Invite Me or idc lol')
+      .setColor(0x00ceff);
     message.channel.send(inviteEmbed);
   } else if (command == "wel") {
     const welcomeEmbed = new Discord.MessageEmbed().setTitle("Welcome!").setColor(0x00ceff).setDescription(
