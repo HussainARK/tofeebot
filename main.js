@@ -58,7 +58,7 @@ These are commands that you can use:\n
 ***Other***:
     **t/source** - Get the GitHub Page of this Open-Source Discord Bot!
     **t/invite** - Invite Tofee Bot to Other Servers
-    
+
     ***DM Me to improve the Bot***`).setFooter('Made By Tofee#9999');
 
   message.channel.send(embed);
@@ -101,7 +101,7 @@ Have a Great Time! Hope You Enjoy!`
       });
     }
   } else {
-    message.channel.send("Bruh what did you say? ENTER A REAL COMMAND LMFAO");
+    message.channel.send("Bruh what did you say? this command doesn't exist lol");
   }
 });
 
