@@ -69,12 +69,16 @@ These are commands that you can use:\n
   } else if (command == "ask") {
     client.commands.get("ask").execute(message, args);
   } else if (command == "invite") {
-    message.channel.send('Invite Me lmao https://discord.com/oauth2/authorize?client_id=748435354398359602&scope=bot');
+    const inviteEmbed = new Discord.MessageEmbed()
+      .setURL("https://discord.com/oauth2/authorize?client_id=748435354398359602&scope=bot")
+      .setTitle("Invite Me")
+      .setDescription('Invite Me or idc lol');
+    message.channel.send(inviteEmbed);
   } else if (command == "wel") {
     const welcomeEmbed = new Discord.MessageEmbed().setTitle("Welcome!").setColor(0x00ceff).setDescription(
 `Welcome to **${message.guild.name}**!
 Have a Great Time! Hope You Enjoy!`
-    ).setFooter('Made By Tofee#9999');
+    );
     
     message.channel.send(welcomeEmbed);
   // } else if (command == "say") {
@@ -94,7 +98,7 @@ Have a Great Time! Hope You Enjoy!`
       
       const pollEmbed = new Discord.MessageEmbed()
         .setTitle("📝 " + pollText)
-        .setColor(0x6895ff).setFooter('Made By Tofee#9999');
+        .setColor(0x6895ff).setFooter('Poll By ' + message.author.username);
       message.channel.send(pollEmbed).then((messageReaction) => {
         messageReaction.react("👍");
         messageReaction.react("👎");
